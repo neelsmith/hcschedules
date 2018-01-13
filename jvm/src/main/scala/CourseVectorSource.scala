@@ -7,7 +7,8 @@ import scala.io.Source
 
     def apply(fName: String, sep: String = "\t") : Vector[Course] = {
       def lines = Source.fromFile(fName).getLines.toVector
-      for (l <- lines) yield {
+      // drop header line:
+      for (l <- lines.tail) yield {
         Course(l, sep)
       }
     }

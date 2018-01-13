@@ -1,4 +1,4 @@
-name := "Utilities for working with Holy Cross course scheduling data"
+name := "Work with HC course schedules"
 
 crossScalaVersions := Seq("2.11.8", "2.12.1")
 
