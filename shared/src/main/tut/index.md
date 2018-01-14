@@ -15,3 +15,4 @@ Each row should have the following columns in this sequence:
 6. days course meets
 7. meeting time
 8. course capacity
+9. semester (abbreviated [SF]YY)

@@ -1,5 +1,5 @@
 package edu.holycross.shot.courses
-
+import scala.util.Try
 
 /**  An individual course.
 *
@@ -11,8 +11,8 @@ package edu.holycross.shot.courses
 * @param hour Meeting time.
 */
 case class Course(courseNum : String, title: String, instructor: Instructor,
-  areas: String,
-  courseSlot: Option[CourseDays], hour: String)
+  areas: String, courseSlot: Option[CourseDays], hour: String, capacity: Option[Int],
+  semesterCode: String)
 
 
 /** Factory object for creating [[Course]]s from a delimited text string.
@@ -26,6 +26,7 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
 *  6. days course meets
 *  7. meeting time
 *  8. course capacity
+*  9. semester code in format [FS]YY
 */
 object Course {
 
@@ -45,7 +46,8 @@ object Course {
 
     val slot = courseDaysFromString(cols(5))
     val hr = cols(6)
-
-    Course(courseNum, title, prof, areas,slot, hr)
+    val cap = Try(cols(7).toInt).toOption
+    val semesterCode = cols(8)
+    Course(courseNum, title, prof, areas,slot, hr, cap, semesterCode)
   }
 }

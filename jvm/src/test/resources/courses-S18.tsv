@@ -1,38 +1,38 @@
-COURSE NUM	COURSE TITLE	PROFESSOR	Com. Area Req.	Cross-List	DAYS	TIME	MAX
-CLAS10101	Women & Men in Greek Lit & Society	Prof. Martin	LIT		T R	11:00	28
-CLAS10201	Women & Men in Roman Lit & Society	Prof. Seider	LIT		M W F	11:00	28
-CLAS11201	Greek Myths in Literature	Fr. Vodoklys	LIT		M W F	11:00	19
-CLAS11401	Discerning God & Discovering Self	Fr. Vodoklys	LIT or RELS	Catholic Studies	M W F	2:00	19
-CLAS12001	Mythology	Prof. Andrews	LIT		T R	9:30	28
-CLAS14101	Ancient Greece: Freedom & Slavery	Prof. Martin	HIST		T R	2:00	28
-CLAS16001	Introduction to Classical Archaeology	Prof. Perry	ARTS	Vis Arts-Hist	T R	9:30	28
-CLAS19901	Ancient Coins	Prof. Smith	ARTS	Vis Arts-Hist	W F	12:30	15
-CLAS22501	Power, Persuasion, & the Law	Prof. Hamilton	LIT		T R	11:00	15
-GREK10101	Introduction to Greek 1	Prof. Smith	LANG		M W F	9:00	19
-GREK21301	Intermediate Greek 1	Prof. Joseph	LANG		M W F	10:00	19
-GREK34001	Herodotus	Prof. Smith	LANG or LIT		M W F	10:00	15
-LATN10101	Introduction to Latin 1	Prof. Swalec	LANG		M W F	9:00	19
-LATN10102	Introduction to Latin 1	Prof. Seider	LANG		M W F	1:00	19
-LATN10103	Introduction to Latin 1	Prof. Swalec	LANG		M W F	12:00	19
-LATN21301	Intermediate Latin 1	Prof. Swalec	LANG		M W F	2:00	19
-LATN27501	Advanced Latin Workshop	Prof. Andrews	LANG		M W F	1:00	19
-LATN32201	Cicero’s Speeches	Prof. Hamilton	LANG or LIT		T R	2:00	15
-LATN34401	Catullus	Prof. Andrews	LANG or LIT		M W	3:00	15
-CLAS103 01	Greek and Roman Epic	Prof. Ebbott	Lit		T R	11:00	28
-CLAS109 01	Clas & Bib Sources Eng/Eur Lit	Fr. Vodoklys	Lit	Catholic Studies	M W F	11:00	19
-CLAS120 01	Mythology	Prof. Hamilton	Lit		M W F	12:00	28
-CLAS151 01	History of Ancient Rome	Prof. Swalec	Hist		M W F	11:00	28
-CLAS160 01	Introduction to Classical Archaeology	Prof. Reiterman	Arts	VisArts/Hist	M W F	10:00	28
-CLAS19901	Citizens & Migrants in the Anc. World	Prof. Swalec			M W F	2:00	28
-CLAS230 01	Nature in the Classical World	Prof. Seider	Lit / Phil	Env. Studies	T R	11:00	28
-CLAS221 01	Women in Classical Mythology	Prof. Andrews	Lit	GSWS	M W F	1:00	19
-CLAS299 01	The Ideological Destruction of Art	Prof. Perry	ARTS	Peace & Conflict Studies	T R	9:30	19
-GREK102 01	Introduction to Greek 2	Prof. Smith	Lang		M W F	9:00	19
-GREK214 01	Intermediate Greek 2	Prof. Andrews	Lang		M W F	10:00	19
-GREK360 01	Aeschylus	Prof. Hamilton	Lang/Lit		M W	3:00	15
-LATN102 01	Introduction to Latin 2	Prof. Swalec	Lang		M W F	9:00	19
-LATN102 02	Introduction to Latin 2	Prof. Reiterman	Lang		M W F	12:00	19
-LATN102 03	Introduction to Latin 2	Prof. Seider	Lang		M W F	1:00	19
-LATN214 01	Intermediate Latin 2	Fr. Vodoklys	Lang		M W F	2:00	19
-LATN359 01	Vergil: Eclogues & Georgics	Prof. Seider	Lang/Lit		T R	12:30	15
-LATN370 01	Josephus	Prof. Martin	Lang/Lit		T R	9:30	15
+COURSE NUM	COURSE TITLE	PROFESSOR	Com. Area Req.	Cross-List	DAYS	TIME	MAX	SEMESTER
+CLAS10101	Women & Men in Greek Lit & Society	Prof. Martin	LIT		T R	11:00	28	F17
+CLAS10201	Women & Men in Roman Lit & Society	Prof. Seider	LIT		M W F	11:00	28	F17
+CLAS11201	Greek Myths in Literature	Fr. Vodoklys	LIT		M W F	11:00	19	F17
+CLAS11401	Discerning God & Discovering Self	Fr. Vodoklys	LIT or RELS	Catholic Studies	M W F	2:00	19	F17
+CLAS12001	Mythology	Prof. Andrews	LIT		T R	9:30	28	F17
+CLAS14101	Ancient Greece: Freedom & Slavery	Prof. Martin	HIST		T R	2:00	28	F17
+CLAS16001	Introduction to Classical Archaeology	Prof. Perry	ARTS	Vis Arts-Hist	T R	9:30	28	F17
+CLAS19901	Ancient Coins	Prof. Smith	ARTS	Vis Arts-Hist	W F	12:30	15	F17
+CLAS22501	Power, Persuasion, & the Law	Prof. Hamilton	LIT		T R	11:00	15	F17
+GREK10101	Introduction to Greek 1	Prof. Smith	LANG		M W F	9:00	19	F17
+GREK21301	Intermediate Greek 1	Prof. Joseph	LANG		M W F	10:00	19	F17
+GREK34001	Herodotus	Prof. Smith	LANG or LIT		M W F	10:00	15	F17
+LATN10101	Introduction to Latin 1	Prof. Swalec	LANG		M W F	9:00	19	F17
+LATN10102	Introduction to Latin 1	Prof. Seider	LANG		M W F	1:00	19	F17
+LATN10103	Introduction to Latin 1	Prof. Swalec	LANG		M W F	12:00	19	F17
+LATN21301	Intermediate Latin 1	Prof. Swalec	LANG		M W F	2:00	19	F17
+LATN27501	Advanced Latin Workshop	Prof. Andrews	LANG		M W F	1:00	19	F17
+LATN32201	Cicero’s Speeches	Prof. Hamilton	LANG or LIT		T R	2:00	15	F17
+LATN34401	Catullus	Prof. Andrews	LANG or LIT		M W	3:00	15	F17
+CLAS103 01	Greek and Roman Epic	Prof. Ebbott	Lit		T R	11:00	28	S18
+CLAS109 01	Clas & Bib Sources Eng/Eur Lit	Fr. Vodoklys	Lit	Catholic Studies	M W F	11:00	19	S18
+CLAS120 01	Mythology	Prof. Hamilton	Lit		M W F	12:00	28	S18
+CLAS151 01	History of Ancient Rome	Prof. Swalec	Hist		M W F	11:00	28	S18
+CLAS160 01	Introduction to Classical Archaeology	Prof. Reiterman	Arts	VisArts/Hist	M W F	10:00	28	S18
+CLAS19901	Citizens & Migrants in the Anc. World	Prof. Swalec			M W F	2:00	28	S18
+CLAS230 01	Nature in the Classical World	Prof. Seider	Lit / Phil	Env. Studies	T R	11:00	28	S18
+CLAS221 01	Women in Classical Mythology	Prof. Andrews	Lit	GSWS	M W F	1:00	19	S18
+CLAS299 01	The Ideological Destruction of Art	Prof. Perry	ARTS	Peace & Conflict Studies	T R	9:30	19	S18
+GREK102 01	Introduction to Greek 2	Prof. Smith	Lang		M W F	9:00	19	S18
+GREK214 01	Intermediate Greek 2	Prof. Andrews	Lang		M W F	10:00	19	S18
+GREK360 01	Aeschylus	Prof. Hamilton	Lang/Lit		M W	3:00	15	S18
+LATN102 01	Introduction to Latin 2	Prof. Swalec	Lang		M W F	9:00	19	S18
+LATN102 02	Introduction to Latin 2	Prof. Reiterman	Lang		M W F	12:00	19	S18
+LATN102 03	Introduction to Latin 2	Prof. Seider	Lang		M W F	1:00	19	S18
+LATN214 01	Intermediate Latin 2	Fr. Vodoklys	Lang		M W F	2:00	19	S18
+LATN359 01	Vergil: Eclogues & Georgics	Prof. Seider	Lang/Lit		T R	12:30	15	S18
+LATN370 01	Josephus	Prof. Martin	Lang/Lit		T R	9:30	15	S18
