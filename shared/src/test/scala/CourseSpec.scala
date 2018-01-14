@@ -25,4 +25,11 @@ class CourseSpec extends FlatSpec {
     assert(course.courseSlot.get == TR)
     assert(course.hour == "11:00")
   }
+
+  it should "have an optional capacity" in {
+    val delimited = "CLAS10101#Women & Men in Greek Lit & Society#Prof. Martin#LIT##T R#11:00#28#F17"
+    val course = Course(delimited, "#")
+    val expected = 28
+    assert(course.capacity.get == expected)
+  }
 }

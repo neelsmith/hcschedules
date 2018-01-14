@@ -9,6 +9,8 @@ import scala.util.Try
 * @param areas Area requirements satisfied by course.
 * @param courseSlot Weekly pattern of days course meets.
 * @param hour Meeting time.
+* @param capacity Maximum enrollment.
+* @param semesterCode Semester offered, formatted as [FS]YY.
 */
 case class Course(courseNum : String, title: String, instructor: Instructor,
   areas: String, courseSlot: Option[CourseDays], hour: String, capacity: Option[Int],

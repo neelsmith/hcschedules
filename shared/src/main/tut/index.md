@@ -3,9 +3,19 @@ title:  Course scheduling library
 layout: page
 ---
 
-Work with delimited text data to manage class schedules on the Holy Cross academic calendar.
 
-Each row should have the following columns in this sequence:
+A library to help manage data about class schedules on the Holy Cross academic calendar.  It includes functions for working with delimited text data in local files, selecting and manipulating course data on various criteria, and formatting variously including in `.ics` format for use with calendar apps.
+
+
+## API docs
+
+Available [here](api).
+
+## Delimited file format
+
+A delimited file should have a header row.
+
+Each subsequent data row should have the following columns in this sequence:
 
 1. course number
 2. course title
