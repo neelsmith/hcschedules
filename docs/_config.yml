@@ -1,0 +1,26 @@
+
+
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            HC course schedules
+tagline:          'Work with class schedule data'
+description:      ''
+
+
+baseurl: '/hcschedules/'
+
+
+author:
+  name:           'Neel Smith'
+
+
+links:
+  - title:  My Github page
+    url:  https://neelsmith.github.io/
+    external: true
+  - title:  Github repository for this library
+    url:  https://github.com/neelsmith/hcschedules
+    external: true
