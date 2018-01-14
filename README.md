@@ -1,3 +1,5 @@
-# README 
+# README
 
-Simple `.tsv` files with semester course schedules.
+A cross-platform library for working data about semester course schedules.
+
+See documentation at <https://neelsmith.github.io/hcschedules/>.
