@@ -36,6 +36,14 @@ case class Semester(startDate: LocalDate, endDate: LocalDate) {
         val wed = startDate.`with`(DayOfWeek.WEDNESDAY)
         wed.format(icsDayFormatter) + "T080000"
       }
+      case WF => {
+        val wed = startDate.`with`(DayOfWeek.WEDNESDAY)
+        wed.format(icsDayFormatter) + "T080000"
+      }
+      case TR => {
+        val tues = startDate.`with`(DayOfWeek.TUESDAY)
+        tues.format(icsDayFormatter) + "T080000"
+      }
       //"First day of class for " +courseDays + " in week of "+ startDate  + " is " + startDate.`with`(DayOfWeek.WEDNESDAY)
       case v: CourseDays => "Not yet implemenbted: " + v
     }
