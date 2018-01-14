@@ -12,6 +12,10 @@ class SemesterSpec extends FlatSpec {
     assert (s18.icsUntil == expected)
   }
 
+  it should "have a label" in {
+    val expected = "S18"
+    assert (s18.label == expected)
+  }
 
   it should "find the first day of a MWF course in ICS format" in {
     val expectedString = "20180124T080000"
