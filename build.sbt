@@ -2,7 +2,7 @@ name := "Work with HC course schedules"
 
 crossScalaVersions := Seq("2.11.8", "2.12.1")
 
-
+resolvers += Resolver.bintrayRepo("neelsmith", "maven")
 lazy val root = project.in(file(".")).
     aggregate(crossedJVM, crossedJS).
     settings(

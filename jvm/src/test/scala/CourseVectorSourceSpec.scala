@@ -1,6 +1,8 @@
 package edu.holycross.shot.courses
 import org.scalatest.FlatSpec
 
+
+
 class CourseVectorSourceSpec extends FlatSpec {
 
   "A CourseVectorSource"  should "construct a Vector from a local file" in {

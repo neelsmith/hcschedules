@@ -1,14 +1,20 @@
 package edu.holycross.shot
+import java.time._
+import java.time.format._
 
 
-
-/** A library for working with course scheduling data.
+/** A library for working with course scheduling data in the Holy Cross academic calendar.
 *
 * ==Overview==
 * A library for working with course scheduling data.
 *
 */
 package object courses {
+
+  /** Format single day in ICS String.*/
+  val icsDayFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd")
+
+
 
   /** Convert string value to [[CourseDays]].
   * @param s String value to convert.

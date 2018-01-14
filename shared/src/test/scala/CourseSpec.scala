@@ -5,7 +5,7 @@ class CourseSpec extends FlatSpec {
 
   "A Course entry"  should "be constructable from a delimited string" in {
 
-    val delimited = "CLAS10101\tWomen & Men in Greek Lit & Society\tProf. Martin\tLIT\tT R\t11:00\t28"
+    val delimited = "CLAS10101\tWomen & Men in Greek Lit & Society\tProf. Martin\tLIT\t\tT R\t11:00\t28"
     val course = Course(delimited)
     assert (course.courseNum ==  "CLAS10101")
     assert(course.title == "Women & Men in Greek Lit & Society")
@@ -17,7 +17,7 @@ class CourseSpec extends FlatSpec {
 
   it  should "accept a specified delimited in the  constructor" in {
 
-    val delimited = "CLAS10101#Women & Men in Greek Lit & Society#Prof. Martin#LIT#T R#11:00#28"
+    val delimited = "CLAS10101#Women & Men in Greek Lit & Society#Prof. Martin#LIT##T R#11:00#28"
     val course = Course(delimited, "#")
     assert (course.courseNum ==  "CLAS10101")
     assert(course.title == "Women & Men in Greek Lit & Society")
