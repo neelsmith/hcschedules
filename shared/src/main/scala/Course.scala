@@ -1,6 +1,15 @@
 package edu.holycross.shot.courses
 
 
+/**  An individual course.
+*
+* @param courseNum Holy Cross course number.
+* @param title Course title.
+* @param instructor Course instructor.
+* @param areas Area requirements satisfied by course.
+* @param courseSlot Weekly pattern of days course meets.
+* @param hour Meeting time.
+*/
 case class Course(courseNum : String, title: String, instructor: Instructor,
   areas: String,
   courseSlot: Option[CourseDays], hour: String)
