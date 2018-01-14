@@ -9,7 +9,7 @@ A library to help manage data about class schedules on the Holy Cross academic c
 
 ## API docs
 
-Available [here](api).
+Available [here](https://neelsmith.github.io/hcschedules/api/edu/holycross/shot/courses/index.html).
 
 ## Delimited file format
 
