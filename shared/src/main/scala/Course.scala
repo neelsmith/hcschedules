@@ -26,12 +26,15 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
 *  6. days course meets
 *  7. meeting time
 *  8. course capacity
-*
-* @param row A single row of data representing one course.
-* @param sep String delimiting columns in a row of data.
 */
 object Course {
 
+
+  /** Create a [[Course]] object from a string of delimited data.
+  *
+  * @param row A single row of data representing one course.
+  * @param sep String delimiting columns in a row of data.
+  */
   def apply(row: String, sep: String = "\t") : Course = {
     val cols = row.split(sep)
     val courseNum = cols(0)
