@@ -4,10 +4,6 @@ import java.time._
 import java.time.format._
 
 
-/// Like course schedule lib, get first M,T or W for start week, provide
-// DTSTART and DTEND base strings for VEVENTs
-// provide UNTIL string for ics repeats
-//
 /** Information about scheduling of a specific semester.
 *
 * @param startDate First day of classes.
@@ -16,6 +12,9 @@ import java.time.format._
 case class Semester(startDate: LocalDate, endDate: LocalDate) {
 
 
+
+  /** Find ICS String for last date of classes this semester.
+  */
   def icsUntil : String = {
     endDate.format(icsDayFormatter) + "T160000"
   }
@@ -31,7 +30,6 @@ case class Semester(startDate: LocalDate, endDate: LocalDate) {
         val wed = startDate.`with`(DayOfWeek.WEDNESDAY)
         wed.format(icsDayFormatter) + "T080000"
       }
-      //"First day of class for " +courseDays + " in week of "+ startDate  + " is " +
       case MWF => {
         val wed = startDate.`with`(DayOfWeek.WEDNESDAY)
         wed.format(icsDayFormatter) + "T080000"
@@ -44,15 +42,8 @@ case class Semester(startDate: LocalDate, endDate: LocalDate) {
         val tues = startDate.`with`(DayOfWeek.TUESDAY)
         tues.format(icsDayFormatter) + "T080000"
       }
-      //"First day of class for " +courseDays + " in week of "+ startDate  + " is " + startDate.`with`(DayOfWeek.WEDNESDAY)
       case v: CourseDays => "Not yet implemenbted: " + v
     }
-    //case object MWF extends CourseDays
-    //case object WF extends CourseDays
-    //case object TR
-
-
-
   }
 }
 
