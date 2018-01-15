@@ -54,7 +54,7 @@ class SemesterScheduleSpec extends FlatSpec {
 
     val schedule = SemesterSchedule(Semester.S18, s18courses)
     val icsCal = schedule.ics
-    println("test " + icsCal)
+    println("\n\nTEST ICS:\n\n" + icsCal + "\n\n")
   }
 
 
