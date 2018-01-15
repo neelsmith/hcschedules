@@ -5,7 +5,7 @@ import org.scalatest.FlatSpec
 
 class SemesterScheduleSpec extends FlatSpec {
 
-  val fName = "jvm/src/test/resources/courses-S18.tsv"
+  val fName = "jvm/src/test/resources/courses-2017-2018.tsv"
   val scheduleMap = ScheduleSource.fromFile(fName)
   val s18courses = scheduleMap("S18")
 

@@ -91,24 +91,30 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
         case _ => "NOT IMPLEMENTED: " + meetingDays
       }
 
+
+      val dayOneIcs = singleDayIcs(sem, firstDay, startTime, endTime)
       meetingDays match {
         case TR => {
-          val dayOneIcs = singleDayIcs(sem, firstDay, startTime, endTime)
           val thurs = firstDayAsLocalDate.plusDays(2)
-          val  thursIcs = singleDayIcs(sem,icsDayFormatter.format(thurs), startTime,endTime )
+          val thursIcs = singleDayIcs(sem,icsDayFormatter.format(thurs), startTime,endTime )
           dayOneIcs + thursIcs
         }
         case MWF => {
-          println("ADD F AND M")
-          "not implemented yet"
+          val fri = firstDayAsLocalDate.plusDays(2)
+          val friIcs  = singleDayIcs(sem,icsDayFormatter.format(fri), startTime,endTime )
+          val mon = firstDayAsLocalDate.plusDays(5)
+          val monIcs  = singleDayIcs(sem,icsDayFormatter.format(mon), startTime,endTime )
+          dayOneIcs + friIcs + monIcs
         }
         case MW => {
-          println("ADD M")
-          "not implemented yet"
+          val mon = firstDayAsLocalDate.plusDays(5)
+          val monIcs  = singleDayIcs(sem,icsDayFormatter.format(mon), startTime,endTime )
+          dayOneIcs + monIcs
         }
         case WF => {
-          println("ADD F")
-          "not implemented yet"
+          val fri = firstDayAsLocalDate.plusDays(2)
+          val friIcs  = singleDayIcs(sem,icsDayFormatter.format(fri), startTime,endTime )
+          dayOneIcs + friIcs
         }
       }
     }

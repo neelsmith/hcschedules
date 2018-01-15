@@ -5,7 +5,7 @@ import org.scalatest.FlatSpec
 
 class ScheduleSourceSpec extends FlatSpec {
 
-  val fName = "jvm/src/test/resources/courses-S18.tsv"
+  val fName = "jvm/src/test/resources/courses-2017-2018.tsv"
   val scheduleMap = ScheduleSource.fromFile(fName)
 
   "A ScheduleSourceSpec"  should "construct a map of schedules from a local file" in  {
