@@ -19,17 +19,18 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
   semesterCode: String) {
 
 
-    /** Add 75 minutes to a class start time on a given day.
+
+    /** Add minutes to a class start time on a given day.
     *
     * @param hr Starting time in String `HHMM` (optionally including ":")
     * @param dayOne Day as String `YYYYMMDD`
     */
-    @throws def add75(hr: String, dayOne: String):  String = {
+    def addMinutes(hr: String, dayOne: String, minn:  Int):  String = {
 
       val s = dayOne + "T" + fourDigit(hr) + "00"
       try {
         val asDateTime = LocalDateTime.parse(s.replaceAll(":",""), icsDayTimeFormatter)
-        val endTime = asDateTime.plusMinutes(75)
+        val endTime = asDateTime.plusMinutes(minn)
         s"${endTime.getHour()}${endTime.getMinute()}00"
       }  catch {
         case dtpe: DateTimeParseException => {
@@ -49,15 +50,17 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
     def ics(sem: Semester): String = {
       val firstDay = sem.icsFirstDay(courseSlot.get)
 
-      val startTime = hour.replaceFirst(":", "") + "00"
+      val startTime = fourDigit(hour) + "00"
+
+
       val endTime = courseSlot.get match {
         // MWF courses always start on hour, end 50 minutes later
-        case MWF => startTime.replaceFirst("00", "50")
+        case MWF => addMinutes(hour, firstDay, 50)
 
         // Twice-weekly courses start at various times and run 75 minutes.
-        case MW =>  add75(hour, firstDay)
-        case WF =>  add75(hour, firstDay)
-        case TR => add75(hour, firstDay)
+        case MW =>  addMinutes(hour, firstDay, 75)
+        case WF =>  addMinutes(hour, firstDay, 75)
+        case TR => addMinutes(hour, firstDay, 75)
 
         case _ => "NOT IMPLEMENTED: " + courseSlot.get
       }
