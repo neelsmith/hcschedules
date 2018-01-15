@@ -28,11 +28,13 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
       raw.size match {
         case 4 =>  raw
         case 3 => {
-          val hr = raw(0).toInt
-          if (hr >= 8 ) {
-            "0" + raw
+          val hr = raw.dropRight(2).toInt
+          if (hr < 8) {
+            val pm = hr + 12
+            s"${pm}${raw.slice(1,3)}"
           } else {
-            s"${hr + 12}${raw.drop(1)}"
+
+            s"0${hr}${raw.drop(1)}"
           }
         }
       }
