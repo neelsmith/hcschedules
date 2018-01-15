@@ -3,7 +3,7 @@ title:  "Using, building, testing"
 layout: page
 ---
 
-The `courses`library is compiled for both the JVM and ScalaJS using scala versions 2.10, 2.11 and 2.12. Binaries for all platforms are available from jcenter.
+The `courses`library is compiled for the JVM using scala versions  2.11 and 2.12. Binaries for all platforms are available from jcenter.
 
 If you are using sbt, include `Resolver.jcenterRepo` in your list of resolvers
 
@@ -11,7 +11,7 @@ If you are using sbt, include `Resolver.jcenterRepo` in your list of resolvers
 
 and add this to your library dependencies:
 
-"edu.holycross.shot.cite" %%% "courses" % VERSION
+"edu.holycross.shot" %%% "courses" % VERSION
 
 
 For maven, ivy or gradle equivalents, refer to https://bintray.com/neelsmith/maven/courses.
