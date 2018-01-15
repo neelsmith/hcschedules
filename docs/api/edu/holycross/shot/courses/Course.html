@@ -144,10 +144,6 @@
                         <a href="CourseDays.html" title="Allowed patterns of course days in Holy Cross academic calendar.">CourseDays</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="object" href="CourseVectorSource$.html" title="Factory object for reading data about courses from local files."></a>
-                        <a href="CourseVectorSource$.html" title="Factory object for reading data about courses from local files.">CourseVectorSource</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
                         <a class="class" href="Instructor.html" title="An instructor of a course."></a>
                         <a href="Instructor.html" title="An instructor of a course.">Instructor</a>
                       </li><li class="current-entities indented4">
@@ -159,17 +155,17 @@
                         <a class="object" href="MWF$.html" title="Monday-Wednesday-Friday course pattern."></a>
                         <a href="MWF$.html" title="Monday-Wednesday-Friday course pattern.">MWF</a>
                       </li><li class="current-entities indented4">
+                        <span class="separator"></span>
+                        <a class="object" href="ScheduleSource$.html" title="Factory object for reading data about courses from local files."></a>
+                        <a href="ScheduleSource$.html" title="Factory object for reading data about courses from local files.">ScheduleSource</a>
+                      </li><li class="current-entities indented4">
                         <a class="object" href="Semester$.html" title="Factory object for retrieving predefined semesters according to published Holy Cross Academic Calendars."></a>
                         <a class="class" href="Semester.html" title="Information about scheduling of a specific semester."></a>
                         <a href="Semester.html" title="Information about scheduling of a specific semester.">Semester</a>
                       </li><li class="current-entities indented4">
-                        <span class="separator"></span>
+                        <a class="object" href="SemesterSchedule$.html" title="Factory object creates SemesterSchedule  object from semester code and course vector."></a>
                         <a class="class" href="SemesterSchedule.html" title="Schedule of classes for a spcific semester."></a>
                         <a href="SemesterSchedule.html" title="Schedule of classes for a spcific semester.">SemesterSchedule</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
-                        <a class="object" href="SemesterScheduleSource$.html" title="Factory object for reading data about courses from local files."></a>
-                        <a href="SemesterScheduleSource$.html" title="Factory object for reading data about courses from local files.">SemesterScheduleSource</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
                         <a class="object" href="TR$.html" title="Tuesday-Thursday course pattern."></a>
@@ -333,6 +329,25 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="edu.holycross.shot.courses.Course#addMinutes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addMinutes(hr:String,dayOne:String,minn:Int):String"></a><a id="addMinutes(String,String,Int):String"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/courses/Course.html#addMinutes(hr:String,dayOne:String,minn:Int):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addMinutes</span><span class="params">(<span name="hr">hr: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="dayOne">dayOne: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="minn">minn: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Add specified number of minutes to a class starting time
+on a given day.</p><div class="fullcomment"><div class="comment cmt"><p>Add specified number of minutes to a class starting time
+on a given day.
+</p></div><dl class="paramcmts block"><dt class="param">hr</dt><dd class="cmt"><p>Starting time in String <code>HHMM</code> (optionally including &quot;:&quot;)</p></dd><dt class="param">dayOne</dt><dd class="cmt"><p>Day as String <code>YYYYMMDD</code></p></dd></dl></div>
     </li><li name="edu.holycross.shot.courses.Course#areas" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="areas:String"></a>
       <span class="permalink">
@@ -510,6 +525,28 @@
       </span>
       
       
+    </li><li name="edu.holycross.shot.courses.Course#ics" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ics(sem:edu.holycross.shot.courses.Semester):String"></a><a id="ics(Semester):String"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/courses/Course.html#ics(sem:edu.holycross.shot.courses.Semester):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ics</span><span class="params">(<span name="sem">sem: <a href="Semester.html" class="extype" name="edu.holycross.shot.courses.Semester">Semester</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Compose ICS calendar entries for this course.</p><div class="fullcomment"><div class="comment cmt"><p>Compose ICS calendar entries for this course.
+A course will require three ICS VEVENTS for a MWF
+class meeting pattern, or two VEVENTS for courses
+that meet twice a week.  All meeting times will
+repeat until the last day of classes for the sepcified
+semester.
+</p></div><dl class="paramcmts block"><dt class="param">sem</dt><dd class="cmt"><p>Semester to write entry for.</p></dd></dl></div>
     </li><li name="edu.holycross.shot.courses.Course#instructor" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="instructor:edu.holycross.shot.courses.Instructor"></a><a id="instructor:Instructor"></a>
       <span class="permalink">
@@ -542,6 +579,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="edu.holycross.shot.courses.Course#meetingDays" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="meetingDays:edu.holycross.shot.courses.CourseDays"></a><a id="meetingDays:CourseDays"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/courses/Course.html#meetingDays:edu.holycross.shot.courses.CourseDays" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">meetingDays</span><span class="result">: <a href="CourseDays.html" class="extype" name="edu.holycross.shot.courses.CourseDays">CourseDays</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Get pattern of course meeting days from Option.</p>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -612,6 +665,25 @@
       </span>
       
       
+    </li><li name="edu.holycross.shot.courses.Course#singleDayIcs" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="singleDayIcs(sem:edu.holycross.shot.courses.Semester,day:String,startTime:String,endTime:String):String"></a><a id="singleDayIcs(Semester,String,String,String):String"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/courses/Course.html#singleDayIcs(sem:edu.holycross.shot.courses.Semester,day:String,startTime:String,endTime:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">singleDayIcs</span><span class="params">(<span name="sem">sem: <a href="Semester.html" class="extype" name="edu.holycross.shot.courses.Semester">Semester</a></span>, <span name="day">day: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="startTime">startTime: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="endTime">endTime: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Format ICS VEVENT for a repeated class meeting on a
+single day of the week.</p><div class="fullcomment"><div class="comment cmt"><p>Format ICS VEVENT for a repeated class meeting on a
+single day of the week.
+</p></div><dl class="paramcmts block"><dt class="param">sem</dt><dd class="cmt"><p>Semester to schedule this event for.</p></dd><dt class="param">day</dt><dd class="cmt"><p>Eight-digit value for day (YYYYMMDD).</p></dd><dt class="param">startTime</dt><dd class="cmt"><p>Six-digit value for starting time (MMHHSS).</p></dd><dt class="param">endTime</dt><dd class="cmt"><p>Six-digit value for ending time (MMHHSS).</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

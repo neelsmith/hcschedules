@@ -144,10 +144,6 @@
                         <a href="CourseDays.html" title="Allowed patterns of course days in Holy Cross academic calendar.">CourseDays</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="object" href="CourseVectorSource$.html" title="Factory object for reading data about courses from local files."></a>
-                        <a href="CourseVectorSource$.html" title="Factory object for reading data about courses from local files.">CourseVectorSource</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
                         <a class="class" href="Instructor.html" title="An instructor of a course."></a>
                         <a href="Instructor.html" title="An instructor of a course.">Instructor</a>
                       </li><li class="current-entities indented4">
@@ -159,17 +155,17 @@
                         <a class="object" href="MWF$.html" title="Monday-Wednesday-Friday course pattern."></a>
                         <a href="MWF$.html" title="Monday-Wednesday-Friday course pattern.">MWF</a>
                       </li><li class="current-entities indented4">
+                        <span class="separator"></span>
+                        <a class="object" href="ScheduleSource$.html" title="Factory object for reading data about courses from local files."></a>
+                        <a href="ScheduleSource$.html" title="Factory object for reading data about courses from local files.">ScheduleSource</a>
+                      </li><li class="current-entities indented4">
                         <a class="object" href="" title="Factory object for retrieving predefined semesters according to published Holy Cross Academic Calendars."></a>
                         <a class="class" href="Semester.html" title="Information about scheduling of a specific semester."></a>
                         <a href="Semester.html" title="Information about scheduling of a specific semester.">Semester</a>
                       </li><li class="current-entities indented4">
-                        <span class="separator"></span>
+                        <a class="object" href="SemesterSchedule$.html" title="Factory object creates SemesterSchedule  object from semester code and course vector."></a>
                         <a class="class" href="SemesterSchedule.html" title="Schedule of classes for a spcific semester."></a>
                         <a href="SemesterSchedule.html" title="Schedule of classes for a spcific semester.">SemesterSchedule</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
-                        <a class="object" href="SemesterScheduleSource$.html" title="Factory object for reading data about courses from local files."></a>
-                        <a href="SemesterScheduleSource$.html" title="Factory object for reading data about courses from local files.">SemesterScheduleSource</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
                         <a class="object" href="TR$.html" title="Tuesday-Thursday course pattern."></a>
@@ -313,6 +309,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="edu.holycross.shot.courses.Semester#F17" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="F17:edu.holycross.shot.courses.Semester"></a><a id="F17:Semester"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/courses/Semester$.html#F17:edu.holycross.shot.courses.Semester" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">F17</span><span class="result">: <a href="Semester.html" class="extype" name="edu.holycross.shot.courses.Semester">Semester</a></span>
+      </span>
+      
+      
     </li><li name="edu.holycross.shot.courses.Semester#F18" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="F18:edu.holycross.shot.courses.Semester"></a><a id="F18:Semester"></a>
       <span class="permalink">
@@ -455,6 +467,25 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="edu.holycross.shot.courses.Semester#forCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="forCode(code:String):Vector[edu.holycross.shot.courses.Semester]"></a><a id="forCode(String):Vector[Semester]"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/courses/Semester$.html#forCode(code:String):Vector[edu.holycross.shot.courses.Semester]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">forCode</span><span class="params">(<span name="code">code: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Vector">Vector</span>[<a href="Semester.html" class="extype" name="edu.holycross.shot.courses.Semester">Semester</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Find all <a href="Semester.html" class="extype" name="edu.holycross.shot.courses.Semester">Semester</a>s with a label matching
+a given string.</p><div class="fullcomment"><div class="comment cmt"><p>Find all <a href="Semester.html" class="extype" name="edu.holycross.shot.courses.Semester">Semester</a>s with a label matching
+a given string.
+</p></div><dl class="paramcmts block"><dt class="param">code</dt><dd class="cmt"><p>Stringto match.</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <span class="permalink">
@@ -563,6 +594,22 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="edu.holycross.shot.courses.Semester#semesters" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="semesters:scala.collection.immutable.Vector[edu.holycross.shot.courses.Semester]"></a><a id="semesters:Vector[Semester]"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/courses/Semester$.html#semesters:scala.collection.immutable.Vector[edu.holycross.shot.courses.Semester]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">semesters</span><span class="result">: <span class="extype" name="scala.collection.immutable.Vector">Vector</span>[<a href="Semester.html" class="extype" name="edu.holycross.shot.courses.Semester">Semester</a>]</span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

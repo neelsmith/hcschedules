@@ -144,10 +144,6 @@
                         <a href="CourseDays.html" title="Allowed patterns of course days in Holy Cross academic calendar.">CourseDays</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="object" href="CourseVectorSource$.html" title="Factory object for reading data about courses from local files."></a>
-                        <a href="CourseVectorSource$.html" title="Factory object for reading data about courses from local files.">CourseVectorSource</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
                         <a class="class" href="Instructor.html" title="An instructor of a course."></a>
                         <a href="Instructor.html" title="An instructor of a course.">Instructor</a>
                       </li><li class="current-entities indented4">
@@ -159,17 +155,17 @@
                         <a class="object" href="MWF$.html" title="Monday-Wednesday-Friday course pattern."></a>
                         <a href="MWF$.html" title="Monday-Wednesday-Friday course pattern.">MWF</a>
                       </li><li class="current-entities indented4">
+                        <span class="separator"></span>
+                        <a class="object" href="ScheduleSource$.html" title="Factory object for reading data about courses from local files."></a>
+                        <a href="ScheduleSource$.html" title="Factory object for reading data about courses from local files.">ScheduleSource</a>
+                      </li><li class="current-entities indented4">
                         <a class="object" href="Semester$.html" title="Factory object for retrieving predefined semesters according to published Holy Cross Academic Calendars."></a>
                         <a class="class" href="Semester.html" title="Information about scheduling of a specific semester."></a>
                         <a href="Semester.html" title="Information about scheduling of a specific semester.">Semester</a>
                       </li><li class="current-entities indented4">
-                        <span class="separator"></span>
+                        <a class="object" href="SemesterSchedule$.html" title="Factory object creates SemesterSchedule  object from semester code and course vector."></a>
                         <a class="class" href="SemesterSchedule.html" title="Schedule of classes for a spcific semester."></a>
                         <a href="SemesterSchedule.html" title="Schedule of classes for a spcific semester.">SemesterSchedule</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
-                        <a class="object" href="SemesterScheduleSource$.html" title="Factory object for reading data about courses from local files."></a>
-                        <a href="SemesterScheduleSource$.html" title="Factory object for reading data about courses from local files.">SemesterScheduleSource</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
                         <a class="object" href="TR$.html" title="Tuesday-Thursday course pattern."></a>
@@ -366,6 +362,24 @@
       </span>
       
       <p class="shortcomment cmt">Convert string value to <a href="CourseDays.html" class="extype" name="edu.holycross.shot.courses.CourseDays">CourseDays</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Convert string value to <a href="CourseDays.html" class="extype" name="edu.holycross.shot.courses.CourseDays">CourseDays</a>.</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>String value to convert.</p></dd></dl></div>
+    </li><li name="edu.holycross.shot.courses#fourDigit" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fourDigit(hr:String):String"></a><a id="fourDigit(String):String"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/courses/index.html#fourDigit(hr:String):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fourDigit</span><span class="params">(<span name="hr">hr: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Represent hour String as four digits.</p><div class="fullcomment"><div class="comment cmt"><p>Represent hour String as four digits.
+</p></div><dl class="paramcmts block"><dt class="param">hr</dt><dd class="cmt"><p>Source string, could include colon,
+could omit leading 0s.</p></dd></dl></div>
     </li><li name="edu.holycross.shot.courses#icsDayFormatter" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="icsDayFormatter:java.time.format.DateTimeFormatter"></a><a id="icsDayFormatter:DateTimeFormatter"></a>
       <span class="permalink">
@@ -381,7 +395,23 @@
         <span class="name">icsDayFormatter</span><span class="result">: <span class="extype" name="java.time.format.DateTimeFormatter">DateTimeFormatter</span></span>
       </span>
       
-      <p class="shortcomment cmt">Format single day in ICS String.</p>
+      <p class="shortcomment cmt">Format single day as ICS String.</p>
+    </li><li name="edu.holycross.shot.courses#icsDayTimeFormatter" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="icsDayTimeFormatter:java.time.format.DateTimeFormatter"></a><a id="icsDayTimeFormatter:DateTimeFormatter"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/courses/index.html#icsDayTimeFormatter:java.time.format.DateTimeFormatter" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">icsDayTimeFormatter</span><span class="result">: <span class="extype" name="java.time.format.DateTimeFormatter">DateTimeFormatter</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Format date-time as ICS String.</p>
     </li><li name="edu.holycross.shot.courses.Course" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Course"></a><a id="Course:Course"></a>
       <span class="permalink">
@@ -407,22 +437,6 @@ Each row should have the following columns in this sequence:</p><ol class="decim
  7. meeting time
  8. course capacity
  9. semester code in format [FS]YY</li></ol></div></div>
-    </li><li name="edu.holycross.shot.courses.CourseVectorSource" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="CourseVectorSource"></a><a id="CourseVectorSource:CourseVectorSource"></a>
-      <span class="permalink">
-      <a href="../../../../edu/holycross/shot/courses/index.html#CourseVectorSource" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a title="Factory object for reading data about courses from local files." href="CourseVectorSource$.html"><span class="name">CourseVectorSource</span></a>
-      </span>
-      
-      <p class="shortcomment cmt"> Factory object for reading data about courses from local files.</p>
     </li><li name="edu.holycross.shot.courses.MW" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MW"></a><a id="MW:MW"></a>
       <span class="permalink">
@@ -455,6 +469,22 @@ Each row should have the following columns in this sequence:</p><ol class="decim
       </span>
       
       <p class="shortcomment cmt">Monday-Wednesday-Friday course pattern.</p>
+    </li><li name="edu.holycross.shot.courses.ScheduleSource" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ScheduleSource"></a><a id="ScheduleSource:ScheduleSource"></a>
+      <span class="permalink">
+      <a href="../../../../edu/holycross/shot/courses/index.html#ScheduleSource" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="Factory object for reading data about courses from local files." href="ScheduleSource$.html"><span class="name">ScheduleSource</span></a>
+      </span>
+      
+      <p class="shortcomment cmt"> Factory object for reading data about courses from local files.</p>
     </li><li name="edu.holycross.shot.courses.Semester" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Semester"></a><a id="Semester:Semester"></a>
       <span class="permalink">
@@ -471,10 +501,10 @@ Each row should have the following columns in this sequence:</p><ol class="decim
       </span>
       
       <p class="shortcomment cmt">Factory object for retrieving predefined semesters according to published Holy Cross Academic Calendars.</p>
-    </li><li name="edu.holycross.shot.courses.SemesterScheduleSource" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SemesterScheduleSource"></a><a id="SemesterScheduleSource:SemesterScheduleSource"></a>
+    </li><li name="edu.holycross.shot.courses.SemesterSchedule" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SemesterSchedule"></a><a id="SemesterSchedule:SemesterSchedule"></a>
       <span class="permalink">
-      <a href="../../../../edu/holycross/shot/courses/index.html#SemesterScheduleSource" title="Permalink">
+      <a href="../../../../edu/holycross/shot/courses/index.html#SemesterSchedule" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -483,10 +513,11 @@ Each row should have the following columns in this sequence:</p><ol class="decim
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a title="Factory object for reading data about courses from local files." href="SemesterScheduleSource$.html"><span class="name">SemesterScheduleSource</span></a>
+        <a title="Factory object creates SemesterSchedule  object from semester code and course vector." href="SemesterSchedule$.html"><span class="name">SemesterSchedule</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
-      <p class="shortcomment cmt"> Factory object for reading data about courses from local files.</p>
+      <p class="shortcomment cmt">Factory object creates <a href="SemesterSchedule.html" class="extype" name="edu.holycross.shot.courses.SemesterSchedule">SemesterSchedule</a>  object
+from semester code and course vector.</p>
     </li><li name="edu.holycross.shot.courses.TR" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="TR"></a><a id="TR:TR"></a>
       <span class="permalink">
