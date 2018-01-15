@@ -18,27 +18,6 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
   areas: String, courseSlot: Option[CourseDays], hour: String, capacity: Option[Int],
   semesterCode: String) {
 
-    /** Represent hour String as four digits.
-    *
-    * @param hr Source string, could include colon,
-    * could omit leading 0s.
-    */
-    def fourDigit(hr: String): String= {
-      val raw = hr.replaceAll(":","")
-      raw.size match {
-        case 4 =>  raw
-        case 3 => {
-          val hr = raw.dropRight(2).toInt
-          if (hr < 8) {
-            val pm = hr + 12
-            s"${pm}${raw.slice(1,3)}"
-          } else {
-
-            s"0${hr}${raw.drop(1)}"
-          }
-        }
-      }
-    }
 
     /** Add 75 minutes to a class start time on a given day.
     *
