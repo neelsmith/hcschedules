@@ -19,14 +19,17 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
   semesterCode: String) {
 
 
+    /** Get pattern of course meeting days from Option.
+    */
+    def  meetingDays = courseSlot.get
 
-    /** Add minutes to a class start time on a given day.
+    /** Add specified number of minutes to a class starting time
+    * on a given day.
     *
     * @param hr Starting time in String `HHMM` (optionally including ":")
     * @param dayOne Day as String `YYYYMMDD`
     */
     def addMinutes(hr: String, dayOne: String, minn:  Int):  String = {
-
       val s = dayOne + "T" + fourDigit(hr) + "00"
       try {
         val asDateTime = LocalDateTime.parse(s.replaceAll(":",""), icsDayTimeFormatter)
@@ -39,39 +42,75 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
         case t: Throwable => {
           throw new Exception("Unrecognized exception: " + t)
         }
-
       }
     }
 
-    /** Write ICS calendar entery for course.
+
+    /** Format ICS VEVENT for a repeated class meeting on a
+    * single day of the week.
+    *
+    * @param sem Semester to schedule this event for.
+    * @param day Eight-digit value for day (YYYYMMDD).
+    * @param startTime Six-digit value for starting time (MMHHSS).
+    * @param endTime Six-digit value for ending time (MMHHSS).
+    */
+    def singleDayIcs(sem: Semester, day: String, startTime: String, endTime: String) : String = {
+      s"BEGIN:VEVENT\nSUMMARY:${title}\nTZID:America/New_York\n" +
+      s"DTSTART:${day}T${startTime}\n" +
+      s"DTEND:${day}T${endTime}\n" +
+      s"DTSTAMP:${icsDayTimeFormatter.format(Instant.now())}\n" +
+      s"RRULE:FREQ=WEEKLY;UNTIL=${sem.icsUntil}\n" +
+      "END:VEVENT\n"
+    }
+
+
+
+    /** Compose ICS calendar entries for this course.
+    * A course will require three ICS VEVENTS for a MWF
+    * class meeting pattern, or two VEVENTS for courses
+    * that meet twice a week.  All meeting times will
+    * repeat until the last day of classes for the sepcified
+    * semester.
     *
     * @param sem Semester to write entry for.
     */
     def ics(sem: Semester): String = {
-      val firstDay = sem.icsFirstDay(courseSlot.get)
+
+      val firstDay = sem.icsFirstDay(meetingDays)
+      val firstDayAsLocalDate = LocalDate.parse(firstDay, icsDayFormatter)
 
       val startTime = fourDigit(hour) + "00"
-
-
-      val endTime = courseSlot.get match {
+      val endTime = meetingDays match {
         // MWF courses always start on hour, end 50 minutes later
         case MWF => addMinutes(hour, firstDay, 50)
-
         // Twice-weekly courses start at various times and run 75 minutes.
         case MW =>  addMinutes(hour, firstDay, 75)
         case WF =>  addMinutes(hour, firstDay, 75)
         case TR => addMinutes(hour, firstDay, 75)
 
-        case _ => "NOT IMPLEMENTED: " + courseSlot.get
+        case _ => "NOT IMPLEMENTED: " + meetingDays
       }
 
-      s"BEGIN:VEVENT\nSUMMARY:${title}\nTZID:America/New_York\n" +
-      s"DTSTART:${firstDay}T${startTime}\n" +
-      s"DTEND:${firstDay}T${endTime}\n" +
-      s"DTSTAMP:${icsDayTimeFormatter.format(Instant.now())}\n" +
-      s"RRULE:FREQ=WEEKLY;UNTIL=${sem.icsUntil}\n" +
-      "END:VEVENT\n"
-      //LOCATION:Classroom assignment...
+      meetingDays match {
+        case TR => {
+          val dayOneIcs = singleDayIcs(sem, firstDay, startTime, endTime)
+          val thurs = firstDayAsLocalDate.plusDays(2)
+          val  thursIcs = singleDayIcs(sem,icsDayFormatter.format(thurs), startTime,endTime )
+          dayOneIcs + thursIcs
+        }
+        case MWF => {
+          println("ADD F AND M")
+          "not implemented yet"
+        }
+        case MW => {
+          println("ADD M")
+          "not implemented yet"
+        }
+        case WF => {
+          println("ADD F")
+          "not implemented yet"
+        }
+      }
     }
 
   }
