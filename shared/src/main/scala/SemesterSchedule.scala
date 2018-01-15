@@ -18,17 +18,28 @@ case class SemesterSchedule(semester: Semester, courses: Vector[Course]) {
   /** Label for semester schedule. */
   def label: String = { "Course schedule: " + semester.label}
 
+
+  /** Create calendar in ICS format.
+  */
+  def ics: String = {
+    val opener = "BEGIN:VCALENDAR\nVERSION:2.0\n"
+    val closer = "END:VCALENDAR\n"
+    val body = ""
+    opener + body + closer
+  }
   /** Select Latin courses. */
-  def latin:  Vector[Course] = courses.filter(_.courseNum.startsWith("LA"))
+  def latin:  SemesterSchedule =   SemesterSchedule(semester,courses.filter(_.courseNum.startsWith("LA")))
 
   /** Select Greek courses. */
-  def greek = courses.filter(_.courseNum.startsWith("GR"))
+  def greek: SemesterSchedule = SemesterSchedule(semester,courses.filter(_.courseNum.startsWith("GR")))
 
   /** Select Classics courses. */
-  def classics = courses.filter(_.courseNum.startsWith("CL"))
+  def classics: SemesterSchedule = SemesterSchedule(semester,courses.filter(_.courseNum.startsWith("CL")))
 
   /** Select courses outside Classics department. */
-  def extra = courses diff latin diff greek diff classics
+  def extra: SemesterSchedule =
+    SemesterSchedule(semester,
+      courses diff latin.courses diff greek.courses diff classics.courses )
 
 }
 

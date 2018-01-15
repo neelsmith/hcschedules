@@ -50,7 +50,12 @@ class SemesterScheduleSpec extends FlatSpec {
   }
 
 
-  it should "create ICS calendars" in pending
+  it should "create ICS calendars" in {
+
+    val schedule = SemesterSchedule(Semester.S18, s18courses)
+    val icsCal = schedule.ics
+    println("test " + icsCal)
+  }
 
 
 
