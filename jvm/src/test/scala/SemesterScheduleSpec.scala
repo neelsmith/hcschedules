@@ -34,10 +34,19 @@ class SemesterScheduleSpec extends FlatSpec {
   it should "be able to select only Latin courses" in {
     val schedule = SemesterSchedule(Semester.S18, s18courses)
     val expected = 6
-    assert(schedule.size == expected)
-
+    assert(schedule.latin.size == expected)
   }
 
+  it should "be able to select only Greek courses" in {
+    val schedule = SemesterSchedule(Semester.S18, s18courses)
+    val expected = 3
+    assert(schedule.greek.size == expected)
+  }
 
+  it should "be able to select only Classics courses" in {
+    val schedule = SemesterSchedule(Semester.S18, s18courses)
+    val expected = 9
+    assert(schedule.classics.size == expected)
+  }
 
 }
