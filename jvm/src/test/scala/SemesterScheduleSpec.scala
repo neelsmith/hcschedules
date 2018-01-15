@@ -49,4 +49,18 @@ class SemesterScheduleSpec extends FlatSpec {
     assert(schedule.classics.size == expected)
   }
 
+
+  it should "create ICS calendars" in pending
+
+
+
+  "Its factory object" should "make a SemesterSchedule from a key and vector of courses" in {
+
+     try {
+       val schedule = SemesterSchedule("S18", s18courses)
+     } catch {
+       case iae:  IllegalArgumentException => assert(true)
+       case t: Throwable => fail ("Should have thrown an IllegalArgumentException:  " + t)
+     }
+  }
 }

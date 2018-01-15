@@ -31,3 +31,22 @@ case class SemesterSchedule(semester: Semester, courses: Vector[Course]) {
   def extra = courses diff latin diff greek diff classics
 
 }
+
+/** Factory object creates [[SemesterSchedule]]  object
+* from semester code and course vector.
+*/
+object SemesterSchedule {
+
+
+  /**  Creates [[SemesterSchedule]]  object
+  * from semester code and course vector.
+  *
+  * @param key Unique key identifying semester.
+  * @param courses Vector of courses.
+  */
+  def apply(key: String, courses: Vector[Course]) : SemesterSchedule = {
+    val semesters = Semester.forCode(key)
+    require (semesters.size == 1, "Semester key " + key + " was not a valid unique value.")
+    SemesterSchedule(semesters(0), courses)
+  }
+}
