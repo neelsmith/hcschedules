@@ -8,17 +8,17 @@ class SemesterScheduleSpec extends FlatSpec {
   val fName = "jvm/src/test/resources/courses-2017-2018.tsv"
   val scheduleMap = ScheduleSource.fromFile(fName)
   val s18courses = scheduleMap("S18")
+  val s18Schedule = SemesterSchedule(Semester.S18, s18courses)
 
   "A SemesterSchedule"  should "have a label" in {
-    val schedule = SemesterSchedule(Semester.S18, s18courses)
     val expected = "Course schedule: S18"
-    assert (schedule.label == expected)
+    assert (s18Schedule.label == expected)
   }
 
   it should "throw an exception if given an empty list of courses" in {
     val courses = Vector.empty[Course]
     try {
-      val schedule = SemesterSchedule(Semester.S18, s18courses)
+      val schedule = SemesterSchedule(Semester.S18, courses)
     } catch {
       case iae:  IllegalArgumentException => assert(true)
       case t: Throwable => fail ("Should have thrown an IllegalArgumentException:  " + t)
@@ -26,35 +26,30 @@ class SemesterScheduleSpec extends FlatSpec {
   }
 
   it should "report the number of courses scheduled" in {
-    val schedule = SemesterSchedule(Semester.S18, s18courses)
     val expected = 18
-    assert (schedule.size == expected)
+    assert (s18Schedule.size == expected)
   }
 
   it should "be able to select only Latin courses" in {
-    val schedule = SemesterSchedule(Semester.S18, s18courses)
     val expected = 6
-    assert(schedule.latin.size == expected)
+    assert(s18Schedule.latin.size == expected)
   }
 
   it should "be able to select only Greek courses" in {
-    val schedule = SemesterSchedule(Semester.S18, s18courses)
     val expected = 3
-    assert(schedule.greek.size == expected)
+    assert(s18Schedule.greek.size == expected)
   }
 
   it should "be able to select only Classics courses" in {
-    val schedule = SemesterSchedule(Semester.S18, s18courses)
     val expected = 9
-    assert(schedule.classics.size == expected)
+    assert(s18Schedule.classics.size == expected)
   }
 
 
   it should "create ICS calendars" in {
-
-    val schedule = SemesterSchedule(Semester.S18, s18courses)
-    val icsCal = schedule.ics
-    println("\n\nTEST ICS:\n\n" + icsCal + "\n\n")
+    val latinCal = s18Schedule.latin.ics.split("\n")
+    val eventLabels = latinCal.filter(_.contains("BEGIN:VEVENT"))
+    assert(eventLabels.size == 16)
   }
 
 
