@@ -32,4 +32,10 @@ class CourseSpec extends FlatSpec {
     val expected = 28
     assert(course.capacity.get == expected)
   }
+
+  it should "generate an ICS calendar entry" in {
+    val delimited = "CLAS10101#Women & Men in Greek Lit & Society#Prof. Martin#LIT##T R#11:00#28#F17"
+    val course = Course(delimited, "#")
+    println("ICS for course:\n\n " + course.ics(Semester.S18) + "\n\n")
+  }
 }

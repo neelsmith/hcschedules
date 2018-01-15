@@ -1,4 +1,6 @@
 package edu.holycross.shot.courses
+import java.time._
+import java.time.format._
 import scala.util.Try
 
 /**  An individual course.
@@ -14,7 +16,36 @@ import scala.util.Try
 */
 case class Course(courseNum : String, title: String, instructor: Instructor,
   areas: String, courseSlot: Option[CourseDays], hour: String, capacity: Option[Int],
-  semesterCode: String)
+  semesterCode: String) {
+
+    /** Write ICS calendar entery for course.
+    *
+    * @param sem Semester to write entry for.
+    */
+    def ics(sem: Semester): String = {
+      println("Course entry for " + title + " in " + sem.label)
+
+      s"BEGIN:VEVENT\nSUMMARY:${title}\nTZID:America/New_York\n" +
+      s"DTSTART:${sem.icsFirstDay(courseSlot.get)}\n" +
+      s"DTEND:\n" +
+      s"DTSTAMP:${icsDayTimeFormatter.format(Instant.now())}\n" +
+      s"RRULE:FREQ=WEEKLY;UNTIL=${sem.icsUntil}\n" +
+      "END:VEVENT\n"
+
+    }
+/*
+
+Chant class
+
+DTSTART:20180124T100000
+DTEND:20180124T105000
+DTSTAMP:20150202T170000
+RRULE:FREQ=WEEKLY;UNTIL=20180509T105000
+LOCATION:Music Dept
+END:VEVENT
+      */
+
+  }
 
 
 /** Factory object for creating [[Course]]s from a delimited text string.
@@ -32,7 +63,6 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
 */
 object Course {
 
-
   /** Create a [[Course]] object from a string of delimited data.
   *
   * @param row A single row of data representing one course.
@@ -45,11 +75,11 @@ object Course {
     val prof = Instructor(cols(2))
     val areas = cols(3)
     // for now, ignore column 4
-
     val slot = courseDaysFromString(cols(5))
     val hr = cols(6)
     val cap = Try(cols(7).toInt).toOption
     val semesterCode = cols(8)
+
     Course(courseNum, title, prof, areas,slot, hr, cap, semesterCode)
   }
 }

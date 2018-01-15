@@ -11,10 +11,11 @@ import java.time.format._
 */
 package object courses {
 
-  /** Format single day in ICS String.*/
-  val icsDayFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd")
+  /** Format single day as ICS String.*/
+  val icsDayFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd").withZone( ZoneId.systemDefault() )
 
-
+  /** Format date-time as ICS String.*/
+  val icsDayTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss").withZone( ZoneId.systemDefault() )
 
   /** Convert string value to [[CourseDays]].
   * @param s String value to convert.

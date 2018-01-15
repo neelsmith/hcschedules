@@ -14,10 +14,13 @@ case class Semester(label: String, startDate: LocalDate, endDate: LocalDate) {
   /** Find ICS String for last date of classes this semester.
   */
   def icsUntil : String = {
+    // classes end by 4:00 pm:
     endDate.format(icsDayFormatter) + "T160000"
   }
 
-  /** Find ICS String for first class day of semester for a given [[CourseDays]] pattern.
+  /** Find ICS String for first class day of semester for a given [[CourseDays]]
+  *  pattern.  Creates base ICS string for day only:  specific hours can be
+  *  appended in format TDDDDDD
   *
   * @param courseDays Pattern of scheduled meetings.
   */
@@ -25,19 +28,19 @@ case class Semester(label: String, startDate: LocalDate, endDate: LocalDate) {
     courseDays match {
       case MW => {
         val wed = startDate.`with`(DayOfWeek.WEDNESDAY)
-        wed.format(icsDayFormatter) + "T080000"
+        wed.format(icsDayFormatter)
       }
       case MWF => {
         val wed = startDate.`with`(DayOfWeek.WEDNESDAY)
-        wed.format(icsDayFormatter) + "T080000"
+        wed.format(icsDayFormatter)
       }
       case WF => {
         val wed = startDate.`with`(DayOfWeek.WEDNESDAY)
-        wed.format(icsDayFormatter) + "T080000"
+        wed.format(icsDayFormatter)
       }
       case TR => {
         val tues = startDate.`with`(DayOfWeek.TUESDAY)
-        tues.format(icsDayFormatter) + "T080000"
+        tues.format(icsDayFormatter)
       }
     }
   }
