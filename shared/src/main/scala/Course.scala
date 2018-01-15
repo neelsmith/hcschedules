@@ -18,32 +18,77 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
   areas: String, courseSlot: Option[CourseDays], hour: String, capacity: Option[Int],
   semesterCode: String) {
 
+    /** Represent hour String as four digits.
+    *
+    * @param hr Source string, could include colon,
+    * could omit leading 0s.
+    */
+    def fourDigit(hr: String): String= {
+      val raw = hr.replaceAll(":","")
+      raw.size match {
+        case 4 =>  raw
+        case 3 => {
+          val hr = raw(0).toInt
+          if (hr >= 8 ) {
+            "0" + raw
+          } else {
+            s"${hr + 12}${raw.drop(1)}"
+          }
+        }
+      }
+    }
+
+    /** Add 75 minutes to a class start time on a given day.
+    *
+    * @param hr Starting time in String `HHMM` (optionally including ":")
+    * @param dayOne Day as String `YYYYMMDD`
+    */
+    @throws def add75(hr: String, dayOne: String):  String = {
+
+      val s = dayOne + "T" + fourDigit(hr) + "00"
+      try {
+        val asDateTime = LocalDateTime.parse(s.replaceAll(":",""), icsDayTimeFormatter)
+        val endTime = asDateTime.plusMinutes(75)
+        s"${endTime.getHour()}${endTime.getMinute()}00"
+      }  catch {
+        case dtpe: DateTimeParseException => {
+          throw new Exception( "unable to parse hr/day " + hr + ", " + dayOne + ".  " + dtpe)
+        }
+        case t: Throwable => {
+          throw new Exception("Unrecognized exception: " + t)
+        }
+
+      }
+    }
+
     /** Write ICS calendar entery for course.
     *
     * @param sem Semester to write entry for.
     */
     def ics(sem: Semester): String = {
-      println("Course entry for " + title + " in " + sem.label)
+      val firstDay = sem.icsFirstDay(courseSlot.get)
+
+      val startTime = hour.replaceFirst(":", "") + "00"
+      val endTime = courseSlot.get match {
+        // MWF courses always start on hour, end 50 minutes later
+        case MWF => startTime.replaceFirst("00", "50")
+
+        // Twice-weekly courses start at various times and run 75 minutes.
+        case MW =>  add75(hour, firstDay)
+        case WF =>  add75(hour, firstDay)
+        case TR => add75(hour, firstDay)
+
+        case _ => "NOT IMPLEMENTED: " + courseSlot.get
+      }
 
       s"BEGIN:VEVENT\nSUMMARY:${title}\nTZID:America/New_York\n" +
-      s"DTSTART:${sem.icsFirstDay(courseSlot.get)}\n" +
-      s"DTEND:\n" +
+      s"DTSTART:${firstDay}T${startTime}\n" +
+      s"DTEND:${firstDay}T${endTime}\n" +
       s"DTSTAMP:${icsDayTimeFormatter.format(Instant.now())}\n" +
       s"RRULE:FREQ=WEEKLY;UNTIL=${sem.icsUntil}\n" +
       "END:VEVENT\n"
-
+      //LOCATION:Classroom assignment...
     }
-/*
-
-Chant class
-
-DTSTART:20180124T100000
-DTEND:20180124T105000
-DTSTAMP:20150202T170000
-RRULE:FREQ=WEEKLY;UNTIL=20180509T105000
-LOCATION:Music Dept
-END:VEVENT
-      */
 
   }
 

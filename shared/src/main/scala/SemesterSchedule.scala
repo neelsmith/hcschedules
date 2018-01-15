@@ -24,8 +24,8 @@ case class SemesterSchedule(semester: Semester, courses: Vector[Course]) {
   def ics: String = {
     val opener = "BEGIN:VCALENDAR\nVERSION:2.0\n"
     val closer = "END:VCALENDAR\n"
-    val body = courses.map(_.ics(semester)).mkString("\n")
-    opener + body + "\n" + closer
+    val body = courses.map(_.ics(semester)).mkString
+    opener + body + closer
   }
 
 
