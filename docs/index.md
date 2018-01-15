@@ -10,4 +10,4 @@ A library to help manage data about class schedules on the Holy Cross academic c
 -   [File format](fileformat)
 -   [Quick start](quickstart)
 -   [API docs](https://neelsmith.github.io/hcschedules/api/edu/holycross/shot/courses/index.html)
--   [Building, using and test](building)
+-   [Building, using and testing](building)
