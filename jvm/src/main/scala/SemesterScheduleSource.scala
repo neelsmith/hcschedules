@@ -4,7 +4,7 @@ import scala.io.Source
 
 /**  Factory object for reading data about courses from local files.
 */
-object SemesterScheduleSource {
+object ScheduleSource {
 
 
   /** Read data from a local delimited-text file into a Vector of [[Course]]s.
@@ -12,7 +12,7 @@ object SemesterScheduleSource {
   * @param fName Name of file to read.
   * @param sep Delimiting string.
   */
-  def apply(fName: String, sep: String = "\t") : Vector[Course] = {
+  def fromFile(fName: String, sep: String = "\t") : Vector[SemesterSchedule] = {
     def lines = Source.fromFile(fName).getLines.toVector
     // drop header line:
     for (l <- lines.tail) yield {
