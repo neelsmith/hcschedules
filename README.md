@@ -3,7 +3,7 @@
 
 ## What it is
 
-A cross-platform library for working with data about semester course schedules.
+A JVM library for working with data about semester course schedules.
 
 ## Current version:  1.0.0
 
