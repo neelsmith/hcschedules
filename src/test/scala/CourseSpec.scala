@@ -66,4 +66,18 @@ class CourseSpec extends FlatSpec {
   }
 
 
+  it should "correctly compute ending time in ICS format for classes starting at a.m. times with only three digits" in {
+    val delimited = "GREK10101#Introduction to Greek 1#Prof. Smith#LANG##M W F#9:00#19#F17"
+    val course = Course(delimited, "#")
+    val ics = course.ics(Semester.F17)
+    val endingTimes = ics.split("\n").filter(_.contains("DTEND"))
+
+    val delete = ".+T".r
+    val hours = endingTimes.map(delete.replaceFirstIn(_,""))
+    for (h <- hours) {
+      assert(h == "095000")
+    }
+
+
+  }
 }

@@ -34,7 +34,12 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
       try {
         val asDateTime = LocalDateTime.parse(s.replaceAll(":",""), icsDayTimeFormatter)
         val endTime = asDateTime.plusMinutes(minn)
-        s"${endTime.getHour()}${endTime.getMinute()}00"
+        val rawHourString = s"${endTime.getHour()}"
+        val hourString = rawHourString.size match {
+          case 1 => s"0${rawHourString}"
+          case 2 => rawHourString
+        }
+        s"${hourString}${endTime.getMinute()}00"
       }  catch {
         case dtpe: DateTimeParseException => {
           throw new Exception( "unable to parse hr/day " + hr + ", " + dayOne + ".  " + dtpe)
@@ -79,14 +84,16 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
       val firstDay = sem.icsFirstDay(meetingDays)
       val firstDayAsLocalDate = LocalDate.parse(firstDay, icsDayFormatter)
 
-      val startTime = fourDigit(hour) + "00"
+
+      val fourDigitHour = fourDigit(hour)
+      val startTime = fourDigitHour + "00"
       val endTime = meetingDays match {
         // MWF courses always start on hour, end 50 minutes later
-        case MWF => addMinutes(hour, firstDay, 50)
+        case MWF => addMinutes(fourDigitHour, firstDay, 50)
         // Twice-weekly courses start at various times and run 75 minutes.
-        case MW =>  addMinutes(hour, firstDay, 75)
-        case WF =>  addMinutes(hour, firstDay, 75)
-        case TR => addMinutes(hour, firstDay, 75)
+        case MW =>  addMinutes(fourDigitHour, firstDay, 75)
+        case WF =>  addMinutes(fourDigitHour, firstDay, 75)
+        case TR => addMinutes(fourDigitHour, firstDay, 75)
 
         case _ => "NOT IMPLEMENTED: " + meetingDays
       }
