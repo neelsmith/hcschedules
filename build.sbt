@@ -16,4 +16,4 @@ libraryDependencies ++= Seq(
   "org.scala-lang.modules" %% "scala-xml" % "1.0.6"
 )
 tutTargetDirectory := file("docs")
-tutSourceDirectory := file("src/main/tut")
+tutSourceDirectory := file("tut")
