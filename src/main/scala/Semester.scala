@@ -51,10 +51,16 @@ case class Semester(label: String, startDate: LocalDate, endDate: LocalDate) {
 object Semester {
   val F17 = Semester("F17", LocalDate.parse("2018-08-30"),LocalDate.parse("2018-12-08"))
   val S18 = Semester("S18", LocalDate.parse("2018-01-23"),LocalDate.parse("2018-05-07"))
+
   val F18 = Semester("F18", LocalDate.parse("2018-08-29"),LocalDate.parse("2018-12-07"))
   val S19 = Semester("S19", LocalDate.parse("2018-01-22"),LocalDate.parse("2018-05-06"))
 
-  val semesters = Vector(F17, S18, F18, S19)
+  val F19 = Semester("F19", LocalDate.parse("2019-09-04"),LocalDate.parse("2019-12-13"))
+  val S20 = Semester("S20", LocalDate.parse("2020-01-21"),LocalDate.parse("2020-05-04"))
+
+
+
+  val semesters = Vector(F17, S18, F18, S19, F19, S20)
 
   /** Find all [[Semester]]s with a label matching
   * a given string.
