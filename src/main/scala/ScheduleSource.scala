@@ -16,7 +16,11 @@ object ScheduleSource {
     def lines = Source.fromFile(fName).getLines.toVector
     // drop header line:
     val prs = for (l <- lines.tail) yield {
+
       val columns = l.split(sep)
+      if (columns.size != 9) {
+        println(s"Wrong number of columns (${columns.size}) in " + l)
+      }
       val code = columns(8)
       val semesterVector = Semester.forCode(code)
       require(semesterVector.size == 1, "Could not find unique semester for code " + code)

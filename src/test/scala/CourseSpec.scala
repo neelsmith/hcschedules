@@ -38,6 +38,7 @@ class CourseSpec extends FlatSpec {
     val course = Course(delimited, "#")
     val ics = course.ics(Semester.S18)
     val eventLines = ics.split("\n").filter(_.contains("BEGIN:VEVENT"))
+    println(ics)
     assert(eventLines.size == 2)
   }
 

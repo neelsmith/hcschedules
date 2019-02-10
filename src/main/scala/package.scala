@@ -36,23 +36,27 @@ package object courses {
 
   /** Represent hour String as four digits.
   *
-  * @param hr Source string, could include colon,
-  * could omit leading 0s.
+  * @param hr Source string, possibly omitting leading 0s.
   */
-  def fourDigit(hr: String): String= {
-    val raw = hr.replaceAll(":","")
-    raw.size match {
-      case 4 =>  raw
-      case 3 => {
-        val hr = raw.dropRight(2).toInt
-        if (hr < 8) {
-          val pm = hr + 12
-          s"${pm}${raw.slice(1,3)}"
-        } else {
-
-          s"0${hr}${raw.drop(1)}"
+  def fourDigit(hr: String): Option[String] = {
+    //println("FORMATTING " + hr + " ....")
+    val timePattern = "^[0-9]?[0-9]:?[0-9][0-9]$"
+    if (hr.matches(timePattern)) {
+      val raw = hr.replaceAll(":","")
+      raw.size match {
+        case 4 =>  Some(raw)
+        case 3 => {
+          val hr = raw.dropRight(2).toInt
+          if (hr < 8) {
+            val pm = hr + 12
+            Some(s"${pm}${raw.slice(1,3)}")
+          } else {
+            Some(s"0${hr}${raw.drop(1)}")
+          }
         }
       }
+    } else {
+      None
     }
   }
 }

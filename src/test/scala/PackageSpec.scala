@@ -25,32 +25,32 @@ class PackageSpec extends FlatSpec {
 
   it should "format three-digit p.m. string patterns as four-digit strings" in {
     val shortList = "1:00"
-    val expected = "1300"
+    val expected = Some("1300")
     assert(fourDigit(shortList)  == expected)
   }
 
   it should "format three-digit a.m. string patters as four-digit strings" in {
     val shortList = "9:00"
-    val expected = "0900"
+    val expected = Some("0900")
     assert(fourDigit(shortList)  == expected)
   }
 
   it should "format four-digit a.m. string patterns as four-digit strings" in {
     val shortList = "10:00"
-    val expected = "1000"
+    val expected = Some("1000")
     assert(fourDigit(shortList)  == expected)
   }
 
   it should "preserve minutes in reformatting p.m. string patterns" in {
       val shortList = "1:30"
-      val expected = "1330"
+      val expected = Some("1330")
       assert(fourDigit(shortList)  == expected)
   }
 
-    it should "preserve minutes in reformatting a.m. string patterns" in {
-        val shortList = "9:30"
-        val expected = "0930"
-        assert(fourDigit(shortList)  == expected)
-    }
+  it should "preserve minutes in reformatting a.m. string patterns" in {
+      val shortList = "9:30"
+      val expected = Some("0930")
+      assert(fourDigit(shortList)  == expected)
+  }
 
 }

@@ -14,14 +14,18 @@ import scala.util.Try
 * @param capacity Maximum enrollment.
 * @param semesterCode Semester offered, formatted as [FS]YY.
 */
-case class Course(courseNum : String, title: String, instructor: Instructor,
-  areas: String, courseSlot: Option[CourseDays], hour: String, capacity: Option[Int],
+case class Course(courseNum : String,
+  title: String, instructor: Instructor,
+  areas: String,
+  courseSlot: Option[CourseDays],
+  hour: String,
+  capacity: Option[Int],
   semesterCode: String) {
 
 
     /** Get pattern of course meeting days from Option.
     */
-    def  meetingDays = courseSlot.get
+    //def  meetingDays:  CourseDays = courseSlot.get
 
     /** Add specified number of minutes to a class starting time
     * on a given day.
@@ -30,7 +34,8 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
     * @param dayOne Day as String `YYYYMMDD`
     */
     def addMinutes(hr: String, dayOne: String, minn:  Int):  String = {
-      val s = dayOne + "T" + fourDigit(hr) + "00"
+      //println("ADDING MINUTES TO HOUR VALUE " + hr)
+      val s  = dayOne + "T" + hr + "00"
       try {
         val asDateTime = LocalDateTime.parse(s.replaceAll(":",""), icsDayTimeFormatter)
         val endTime = asDateTime.plusMinutes(minn)
@@ -60,6 +65,7 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
     * @param endTime Six-digit value for ending time (MMHHSS).
     */
     def singleDayIcs(sem: Semester, day: String, startTime: String, endTime: String) : String = {
+
       s"BEGIN:VEVENT\nSUMMARY:${title}\nTZID:America/New_York\n" +
       s"DTSTART:${day}T${startTime}\n" +
       s"DTEND:${day}T${endTime}\n" +
@@ -74,58 +80,70 @@ case class Course(courseNum : String, title: String, instructor: Instructor,
     * A course will require three ICS VEVENTS for a MWF
     * class meeting pattern, or two VEVENTS for courses
     * that meet twice a week.  All meeting times will
-    * repeat until the last day of classes for the sepcified
+    * repeat until the last day of classes for the specified
     * semester.
     *
     * @param sem Semester to write entry for.
     */
     def ics(sem: Semester): String = {
 
-      val firstDay = sem.icsFirstDay(meetingDays)
-      val firstDayAsLocalDate = LocalDate.parse(firstDay, icsDayFormatter)
+      courseSlot match {
+        case None => {println("No course days given.");  "" }
+        case _ : Option[CourseDays] => {
+          val meetingDays = courseSlot.get
+          val firstDay = sem.icsFirstDay(meetingDays)
+          val firstDayAsLocalDate = LocalDate.parse(firstDay, icsDayFormatter)
 
 
-      val fourDigitHour = fourDigit(hour)
-      val startTime = fourDigitHour + "00"
-      val endTime = meetingDays match {
-        // MWF courses always start on hour, end 50 minutes later
-        case MWF => addMinutes(fourDigitHour, firstDay, 50)
-        // Twice-weekly courses start at various times and run 75 minutes.
-        case MW =>  addMinutes(fourDigitHour, firstDay, 75)
-        case WF =>  addMinutes(fourDigitHour, firstDay, 75)
-        case TR => addMinutes(fourDigitHour, firstDay, 75)
+          val fourDigitHour :  Option[String] = fourDigit(hour)
 
-        case _ => "NOT IMPLEMENTED: " + meetingDays
-      }
+          fourDigitHour match {
+
+            case None => { println("NO TIME SET"); "" }
+            case s: Option[String] => {
+              val startTime = fourDigitHour.get + "00"
+              val endTime = meetingDays match {
+                // MWF courses always start on hour, end 50 minutes later
+                case MWF => addMinutes(fourDigitHour.get, firstDay, 50)
+                // Twice-weekly courses start at various times and run 75 minutes.
+                case MW =>  addMinutes(fourDigitHour.get, firstDay, 75)
+                case WF =>  addMinutes(fourDigitHour.get, firstDay, 75)
+                case TR => addMinutes(fourDigitHour.get, firstDay, 75)
+
+                case _ => "NOT IMPLEMENTED: " + meetingDays
+              }
 
 
-      val dayOneIcs = singleDayIcs(sem, firstDay, startTime, endTime)
-      meetingDays match {
-        case TR => {
-          val thurs = firstDayAsLocalDate.plusDays(2)
-          val thursIcs = singleDayIcs(sem,icsDayFormatter.format(thurs), startTime,endTime )
-          dayOneIcs + thursIcs
-        }
-        case MWF => {
-          val fri = firstDayAsLocalDate.plusDays(2)
-          val friIcs  = singleDayIcs(sem,icsDayFormatter.format(fri), startTime,endTime )
-          val mon = firstDayAsLocalDate.plusDays(5)
-          val monIcs  = singleDayIcs(sem,icsDayFormatter.format(mon), startTime,endTime )
-          dayOneIcs + friIcs + monIcs
-        }
-        case MW => {
-          val mon = firstDayAsLocalDate.plusDays(5)
-          val monIcs  = singleDayIcs(sem,icsDayFormatter.format(mon), startTime,endTime )
-          dayOneIcs + monIcs
-        }
-        case WF => {
-          val fri = firstDayAsLocalDate.plusDays(2)
-          val friIcs  = singleDayIcs(sem,icsDayFormatter.format(fri), startTime,endTime )
-          dayOneIcs + friIcs
+              val dayOneIcs = singleDayIcs(sem, firstDay, startTime, endTime)
+              meetingDays match {
+                case TR => {
+                  val thurs = firstDayAsLocalDate.plusDays(2)
+                  val thursIcs = singleDayIcs(sem,icsDayFormatter.format(thurs), startTime,endTime )
+                  dayOneIcs + thursIcs
+                }
+                case MWF => {
+                  val fri = firstDayAsLocalDate.plusDays(2)
+                  val friIcs  = singleDayIcs(sem,icsDayFormatter.format(fri), startTime,endTime )
+                  val mon = firstDayAsLocalDate.plusDays(5)
+                  val monIcs  = singleDayIcs(sem,icsDayFormatter.format(mon), startTime,endTime )
+                  dayOneIcs + friIcs + monIcs
+                }
+                case MW => {
+                  val mon = firstDayAsLocalDate.plusDays(5)
+                  val monIcs  = singleDayIcs(sem,icsDayFormatter.format(mon), startTime,endTime )
+                  dayOneIcs + monIcs
+                }
+                case WF => {
+                  val fri = firstDayAsLocalDate.plusDays(2)
+                  val friIcs  = singleDayIcs(sem,icsDayFormatter.format(fri), startTime,endTime )
+                  dayOneIcs + friIcs
+                }
+              }
+            }
+          }
         }
       }
     }
-
   }
 
 
@@ -150,7 +168,11 @@ object Course {
   * @param sep String delimiting columns in a row of data.
   */
   def apply(row: String, sep: String = "\t") : Course = {
+
     val cols = row.split(sep)
+    if (cols.size != 9) {
+      println(s"Wrong number of columns (${cols.size}) in " + row)
+    }
     val courseNum = cols(0)
     val title = cols(1)
     val prof = Instructor(cols(2))
