@@ -46,18 +46,33 @@ case class SemesterSchedule(semester: Semester, courses: Vector[Course]) {
   def instructor(prof: String): SemesterSchedule = SemesterSchedule(semester, courses.filter(_.instructor.name == prof))
 
 
+  def profileRubric(rubric : String) : Unit = {
+    val courseList = courses.filter(_.courseNum.startsWith(rubric))
+    if (courseList.nonEmpty) {
+      println("\n" + rubric + s" (${courseList.size})")
+      for (course <- courseList) {
+        println("\t" + course)
+      }
+    }
+  }
 
+  def profileRubrics : Unit = {
+    val rubrics = courses.map(_.courseNum.take(4)).distinct.sorted
+    for (rubric <- rubrics) {
+      profileRubric(rubric)
+    }
+    println("\nTotal courses: " + courses.size + "\n")
+  }
 
-
-  def profileProf(instructorName: String) = {
-    val titles = courses.filter(_.instructor.name.contains(instructorName)).map(course => course.title + s" (${course.semesterCode})")
+  def profileInstructor(instructorName: String) : Unit = {
+    val titles = courses.filter(_.instructor.name.contains(instructorName))
     println(instructorName + s" (${titles.size}):")
     for (course <- titles) { println("\t" + course) }
   }
   def profileInstructors: Unit = {
     val profs = courses.map(_.instructor.name).distinct.sorted
     for (prof <- profs) {
-      profileProf(prof)
+      profileInstructor(prof)
     }
   }
 }
