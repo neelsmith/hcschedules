@@ -74,6 +74,7 @@ case class SemesterSchedule(semester: Semester, courses: Vector[Course]) {
     for (prof <- profs) {
       profileInstructor(prof)
     }
+    println("\nTotal courses: " + courses.size + "\n")
   }
 }
 

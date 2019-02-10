@@ -1,6 +1,6 @@
 # hcschedules: release notes
 
-**2.1.0**: Add functions profiling instructors for semester.
+**2.1.0**: Add functions profiling instructors and rubrics for semester.
 
 
 **2.0.0**:  Change `Course` API to support entries with still unspecified day and time slots.
