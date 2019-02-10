@@ -5,7 +5,7 @@
 
 A JVM library for working with data about semester course schedules.
 
-## Current version:  2.0.0
+## Current version:  2.1.0
 
 Status: **development**.  See [release notes](releases.md)
 

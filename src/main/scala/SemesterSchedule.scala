@@ -43,6 +43,23 @@ case class SemesterSchedule(semester: Semester, courses: Vector[Course]) {
     SemesterSchedule(semester,
       courses diff latin.courses diff greek.courses diff classics.courses )
 
+  def instructor(prof: String): SemesterSchedule = SemesterSchedule(semester, courses.filter(_.instructor.name == prof))
+
+
+
+
+
+  def profileProf(instructorName: String) = {
+    val titles = courses.filter(_.instructor.name.contains(instructorName)).map(course => course.title + s" (${course.semesterCode})")
+    println(instructorName + s" (${titles.size}):")
+    for (course <- titles) { println("\t" + course) }
+  }
+  def profileInstructors: Unit = {
+    val profs = courses.map(_.instructor.name).distinct.sorted
+    for (prof <- profs) {
+      profileProf(prof)
+    }
+  }
 }
 
 /** Factory object creates [[SemesterSchedule]]  object
