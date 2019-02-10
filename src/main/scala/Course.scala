@@ -22,6 +22,9 @@ case class Course(courseNum : String,
   capacity: Option[Int],
   semesterCode: String) {
 
+    override def toString : String = {
+      s"${courseNum} ${title} (${semesterCode}), ${instructor.name}"
+    }
 
     /** Get pattern of course meeting days from Option.
     */
@@ -88,7 +91,7 @@ case class Course(courseNum : String,
     def ics(sem: Semester): String = {
 
       courseSlot match {
-        case None => {println("No course days given.");  "" }
+        case None => {println("No course days given for " + this);  "" }
         case _ : Option[CourseDays] => {
           val meetingDays = courseSlot.get
           val firstDay = sem.icsFirstDay(meetingDays)
@@ -99,7 +102,7 @@ case class Course(courseNum : String,
 
           fourDigitHour match {
 
-            case None => { println("NO TIME SET"); "" }
+            case None => { println("No course meeting time set for " + this); "" }
             case s: Option[String] => {
               val startTime = fourDigitHour.get + "00"
               val endTime = meetingDays match {
